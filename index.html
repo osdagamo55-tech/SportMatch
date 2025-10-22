@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SportMatch Prototype</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Contenedor principal -->
+  <div id="app">
+    <!-- Secciones -->
+    <!-- Sección de inicio con tarjetas -->
+    <div id="homeSection" class="section active">
+      <!-- Barra de filtros -->
+      <div class="filter-bar">
+        <select id="sportFilter" class="filter-select">
+          <option value="all">Todos los deportes</option>
+          <option value="Fútbol">Fútbol</option>
+          <option value="Baloncesto">Baloncesto</option>
+          <option value="Tenis">Tenis</option>
+          <option value="Ciclismo">Ciclismo</option>
+          <option value="Running">Running</option>
+        </select>
+        <select id="levelFilter" class="filter-select">
+          <option value="all">Todos los niveles</option>
+          <option value="Principiante">Principiante</option>
+          <option value="Intermedio">Intermedio</option>
+          <option value="Avanzado">Avanzado</option>
+        </select>
+        <button id="filterBtn" class="filter-btn">Filtrar</button>
+      </div>
+      <!-- Contenedor de tarjetas -->
+      <div class="card-container" id="cardContainer"></div>
+      <!-- Mensaje cuando no hay más usuarios -->
+      <div id="endMessage" class="end-message hidden">No hay más deportistas con estos filtros.</div>
+      <!-- Botones de acción -->
+      <div class="action-buttons">
+        <button id="skipBtn" class="action-btn skip">✖</button>
+        <button id="likeBtn" class="action-btn like">❤</button>
+      </div>
+    </div>
+    <!-- Sección de eventos -->
+    <div id="eventsSection" class="section hidden">
+      <h2>Crear evento deportivo</h2>
+      <form id="eventForm" class="event-form" onsubmit="event.preventDefault(); createEvent();">
+        <label>Deporte
+          <select id="eventSport" required>
+            <option value="Fútbol">Fútbol</option>
+            <option value="Baloncesto">Baloncesto</option>
+            <option value="Tenis">Tenis</option>
+            <option value="Ciclismo">Ciclismo</option>
+            <option value="Running">Running</option>
+          </select>
+        </label>
+        <label>Nivel
+          <select id="eventLevel" required>
+            <option value="Principiante">Principiante</option>
+            <option value="Intermedio">Intermedio</option>
+            <option value="Avanzado">Avanzado</option>
+          </select>
+        </label>
+        <label>Fecha y hora
+          <input type="datetime-local" id="eventDate" required />
+        </label>
+        <label>Ubicación
+          <input type="text" id="eventLocation" placeholder="Parque, cancha..." required />
+        </label>
+        <label>Capacidad
+          <input type="number" id="eventCapacity" min="1" placeholder="Número de participantes" required />
+        </label>
+        <button type="submit" class="primary-btn">Crear evento</button>
+      </form>
+      <div id="eventSuccess" class="success-message hidden">¡Evento creado! (solo prototipo)</div>
+    </div>
+    <!-- Sección de chat -->
+    <div id="chatSection" class="section hidden">
+      <h2>Chat</h2>
+      <div id="chatWindow" class="chat-window">
+        <div class="message incoming">Hola, ¿quieres jugar al fútbol este sábado?</div>
+        <div class="message outgoing">¡Claro! ¿A qué hora te viene bien?</div>
+      </div>
+      <form id="chatForm" class="chat-form" onsubmit="event.preventDefault(); sendMessage();">
+        <input type="text" id="chatInput" placeholder="Escribe un mensaje..." required />
+        <button type="submit" class="primary-btn">Enviar</button>
+      </form>
+    </div>
+    <!-- Sección de perfil -->
+    <div id="profileSection" class="section hidden">
+      <h2>Mi perfil</h2>
+      <p>Esta sección mostrará la información del usuario, así como sus deportes favoritos, nivel y disponibilidad. En el prototipo se utiliza contenido de ejemplo.</p>
+      <ul class="profile-list">
+        <li><strong>Nombre:</strong> Usuario de ejemplo</li>
+        <li><strong>Deporte favorito:</strong> Fútbol</li>
+        <li><strong>Nivel:</strong> Intermedio</li>
+        <li><strong>Ubicación:</strong> Bogotá, D.C.</li>
+        <li><strong>Disponibilidad:</strong> Fines de semana</li>
+      </ul>
+    </div>
+  </div>
+  <!-- Barra de navegación inferior -->
+  <div class="bottom-nav">
+    <button class="nav-item active" id="navHome">🏠</button>
+    <button class="nav-item" id="navEvents">📅</button>
+    <button class="nav-item" id="navChat">💬</button>
+    <button class="nav-item" id="navProfile">👤</button>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
