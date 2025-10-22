@@ -12,6 +12,32 @@
     <!-- Secciones -->
     <!-- Sección de inicio con tarjetas -->
     <div id="homeSection" class="section active">
+      <!-- Cabecera hero -->
+      <header class="hero">
+        <div class="hero-text">
+          <h1>SporMath</h1>
+          <p>Haz match con deportistas compatibles por deporte, nivel, ubicación y disponibilidad. Construye equipos equilibrados cuidando la capacidad ideal de cada disciplina.</p>
+          <div class="hero-badges">
+            <span class="badge">Verificación básica</span>
+            <span class="badge">Match inteligente</span>
+            <span class="badge">Eventos en vivo</span>
+          </div>
+        </div>
+        <div class="hero-stats" id="heroStats">
+          <div class="stat-card">
+            <span class="stat-label">Deportistas cerca</span>
+            <span class="stat-value" id="statPlayers">0</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">Deportes activos</span>
+            <span class="stat-value" id="statSports">0</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">Eventos hoy</span>
+            <span class="stat-value" id="statEvents">0</span>
+          </div>
+        </div>
+      </header>
       <!-- Barra de filtros -->
       <div class="filter-bar">
         <select id="sportFilter" class="filter-select">
@@ -30,6 +56,15 @@
         </select>
         <button id="filterBtn" class="filter-btn">Filtrar</button>
       </div>
+      <!-- Filtros rápidos -->
+      <div class="quick-filters" id="quickFilters">
+        <button class="chip active" data-sport="all">Todos</button>
+        <button class="chip" data-sport="Fútbol">Fútbol 11</button>
+        <button class="chip" data-sport="Baloncesto">Baloncesto 5</button>
+        <button class="chip" data-sport="Tenis">Tenis dobles</button>
+        <button class="chip" data-sport="Ciclismo">Ciclismo grupal</button>
+        <button class="chip" data-sport="Running">Running</button>
+      </div>
       <!-- Contenedor de tarjetas -->
       <div class="card-container" id="cardContainer"></div>
       <!-- Mensaje cuando no hay más usuarios -->
@@ -39,6 +74,21 @@
         <button id="skipBtn" class="action-btn skip">✖</button>
         <button id="likeBtn" class="action-btn like">❤</button>
       </div>
+      <!-- Insights del algoritmo -->
+      <section class="insights">
+        <h2>Insight del motor de emparejamiento</h2>
+        <p>Utilizamos geohash y un puntaje de afinidad para priorizar compañeros según proximidad, compatibilidad de nivel y disponibilidad. Ajusta tus filtros para obtener sugerencias en tiempo real.</p>
+        <ul class="insight-list">
+          <li>Recomendaciones priorizadas por <strong>distancia</strong> y <strong>nivel similar</strong>.</li>
+          <li>Capacidad sugerida automáticamente: <strong>Fútbol 11</strong>, <strong>Baloncesto 5</strong>, <strong>Tenis 2</strong>, <strong>Ciclismo 6</strong>, <strong>Running individual</strong>.</li>
+          <li>Notificaciones push cuando un equipo alcanza la capacidad ideal.</li>
+        </ul>
+      </section>
+      <!-- Recomendaciones de equipos -->
+      <section class="team-recommendations">
+        <h2>Equipos que buscan refuerzos</h2>
+        <div class="team-grid" id="teamGrid"></div>
+      </section>
     </div>
     <!-- Sección de eventos -->
     <div id="eventsSection" class="section hidden">
@@ -72,6 +122,10 @@
         <button type="submit" class="primary-btn">Crear evento</button>
       </form>
       <div id="eventSuccess" class="success-message hidden">¡Evento creado! (solo prototipo)</div>
+      <section class="event-board">
+        <h3>Eventos programados</h3>
+        <div id="eventList" class="event-list"></div>
+      </section>
     </div>
     <!-- Sección de chat -->
     <div id="chatSection" class="section hidden">
@@ -84,6 +138,10 @@
         <input type="text" id="chatInput" placeholder="Escribe un mensaje..." required />
         <button type="submit" class="primary-btn">Enviar</button>
       </form>
+      <div class="chat-hint">
+        <h3>Tips para conversaciones seguras</h3>
+        <p>SportMatch aplica verificación básica del perfil. Comparte detalles sensibles solo cuando te sientas cómodo y coordina el punto de encuentro dentro de la app para mantener trazabilidad.</p>
+      </div>
     </div>
     <!-- Sección de perfil -->
     <div id="profileSection" class="section hidden">
@@ -96,6 +154,15 @@
         <li><strong>Ubicación:</strong> Bogotá, D.C.</li>
         <li><strong>Disponibilidad:</strong> Fines de semana</li>
       </ul>
+      <section class="profile-verification">
+        <h3>Verificación y métricas</h3>
+        <ul>
+          <li>Documento validado: <strong>Si</strong></li>
+          <li>Asistencias verificadas a eventos: <strong>12</strong></li>
+          <li>Reputación promedio: <strong>4.8 / 5</strong></li>
+          <li>Historial de deportes: <strong>Fútbol, Running, Ciclismo</strong></li>
+        </ul>
+      </section>
     </div>
   </div>
   <!-- Barra de navegación inferior -->
